@@ -1,7 +1,5 @@
 package chrono
 
-//go:generate mockgen -source=time_svc.go -package=service -destination=time_svc_mocks.go
-
 import (
 	"strings"
 	"time"

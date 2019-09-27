@@ -1,6 +1,6 @@
 package chrono
 
-//go:generate mockgen -source=time_svc.go -package=service -destination=time_svc_mocks.go
+//go:generate mockgen -source=time_svc.go -package=chrono -destination=time_svc_mocks.go
 
 import (
 	"github.com/golang/protobuf/ptypes/timestamp"

@@ -1,10 +1,10 @@
 module kb-kontrakt.ru/hlfabric/ccdevkit
 
-go 1.12
+go 1.11
 
 require (
 	github.com/fsouza/go-dockerclient v1.4.4 // indirect
-	github.com/golang/mock v1.1.1
+	github.com/golang/mock v1.3.1
 	github.com/golang/protobuf v1.3.2
 	github.com/grpc-ecosystem/go-grpc-middleware v1.1.0 // indirect
 	github.com/hyperledger/fabric v1.4.3

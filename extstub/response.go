@@ -78,6 +78,10 @@ func (mr *marshalResponse) Error(data interface{}) pb.Response {
 }
 
 func (mr *marshalResponse) Success(data interface{}) pb.Response {
+	if bytes, ok := data.([]byte); ok {
+		return shim.Success(bytes)
+	}
+
 	data = mr.formatSuccess(data)
 
 	bytes, err := mr.marshalFunc(data)
