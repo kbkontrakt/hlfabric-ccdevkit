@@ -10,6 +10,7 @@ type (
 
 	// ControlList .
 	ControlList struct {
+		All    bool                `json:"all,omitempty"`
 		Attrs  map[string][]string `json:"attrs,omitempty"`
 		MspID  map[string]bool     `json:"msp,omitempty"`
 		CertID map[string]bool     `json:"cid,omitempty"`
@@ -55,6 +56,30 @@ func CombineMatchAccessOr(funcs ...MatchAccessListFunc) MatchAccessListFunc {
 			if err == nil {
 				return nil
 			}
+		}
+		return ErrAccessRestricted
+	}
+}
+
+// MatchAccessInverseFunc .
+func MatchAccessInverseFunc(fn MatchAccessListFunc) MatchAccessListFunc {
+	return func(name AccessName, ctrlList ControlList, idSvc IdentityService) (err error) {
+		err = fn(name, ctrlList, idSvc)
+		if err == ErrAccessRestricted {
+			return nil
+		}
+		if err != nil {
+			return err
+		}
+		return ErrAccessRestricted
+	}
+}
+
+// MatchAccessForAll .
+func MatchAccessForAll() MatchAccessListFunc {
+	return func(name AccessName, ctrlList ControlList, idSvc IdentityService) error {
+		if ctrlList.All == true {
+			return nil
 		}
 		return ErrAccessRestricted
 	}

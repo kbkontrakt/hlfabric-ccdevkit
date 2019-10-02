@@ -95,7 +95,7 @@ func (svc *identityServiceImpl) MspID() (string, error) {
 		return "", err
 	}
 
-	return cid.GetMSPID(svc.stub)
+	return svc.clientID.GetMSPID()
 }
 
 func (svc *identityServiceImpl) GetAttribute(attrName string) (out AttributeValue, err error) {
