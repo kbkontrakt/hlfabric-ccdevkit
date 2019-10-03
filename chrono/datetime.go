@@ -5,6 +5,7 @@ import (
 	"time"
 
 	"github.com/golang/protobuf/ptypes/timestamp"
+	"github.com/hyperledger/fabric/core/chaincode/shim"
 )
 
 const dateTimeFormat = "2006-01-02T15:04:05.9999999Z"
@@ -54,4 +55,14 @@ func (dateTime *DateTime) UnmarshalJSON(buf []byte) error {
 	dateTime.Time = time
 
 	return nil
+}
+
+// DateTimeFromStub .
+func DateTimeFromStub(stub shim.ChaincodeStubInterface) (*DateTime, error) {
+	timestamp, err := stub.GetTxTimestamp()
+	if err != nil {
+		return nil, err
+	}
+	dateTime := DateTimeFromTimestamp(timestamp)
+	return &dateTime, nil
 }
