@@ -60,17 +60,20 @@ func DefaultFormatSuccess(data interface{}) interface{} {
 
 func (mr *marshalResponse) Error(data interface{}) pb.Response {
 	if data == nil {
-		return shim.Error("empty contents of error")
+		data = "empty contents of error"
+	}
+	if err, ok := data.(error); ok {
+		data = err.Error()
 	}
 
 	data = mr.formatError(data)
 
 	bytes, err := mr.marshalFunc(data)
 	if err != nil {
-		data = mr.formatError(fmt.Sprintf("failed to marshal error response: %+v", err))
+		data = mr.formatError(fmt.Sprintf("failed to marshal [%s] error response: %+v", data, err))
 		bytes, err = mr.marshalFunc(data)
 		if err != nil {
-			return shim.Error(fmt.Sprintf("failed to marshal error response after second call: %+v", err))
+			return shim.Error(fmt.Sprintf("failed to marshal [%s] error response after second call: %+v", data, err))
 		}
 	}
 
