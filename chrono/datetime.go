@@ -8,7 +8,7 @@ import (
 	"github.com/hyperledger/fabric/core/chaincode/shim"
 )
 
-const dateTimeFormat = time.RFC3339Nano
+const dateTimeFormat = "2006-01-02T15:04:05.9999999Z"
 
 // DateTime .
 type DateTime struct {

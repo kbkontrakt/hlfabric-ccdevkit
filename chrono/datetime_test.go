@@ -6,7 +6,7 @@ import (
 )
 
 func TestDateTimeMarshalJSON(t *testing.T) {
-	const strDate = "2006-01-02T15:04:05.999999999+07:00"
+	const strDate = "2006-01-02T15:04:05.9999999Z"
 	dt := DateTimeFromStr(strDate)
 
 	bytes, err := json.Marshal(dt)
