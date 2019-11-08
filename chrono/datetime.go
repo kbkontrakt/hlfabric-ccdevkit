@@ -57,6 +57,11 @@ func (dateTime *DateTime) UnmarshalJSON(buf []byte) error {
 	return nil
 }
 
+// MarshalJSON .
+func (dateTime *DateTime) MarshalJSON() ([]byte, error) {
+	return []byte("\"" + dateTime.Format(dateTimeFormat) + "\""), nil
+}
+
 // DateTimeFromStub .
 func DateTimeFromStub(stub shim.ChaincodeStubInterface) (*DateTime, error) {
 	timestamp, err := stub.GetTxTimestamp()
