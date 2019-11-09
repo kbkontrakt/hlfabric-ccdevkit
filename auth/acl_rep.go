@@ -19,7 +19,7 @@ package auth
 import (
 	"errors"
 
-	"kb-kontrakt.ru/hlfabric/ccdevkit/extstub"
+	"github.com/kbkontrakt/hlfabric-ccdevkit/extstub"
 )
 
 type (

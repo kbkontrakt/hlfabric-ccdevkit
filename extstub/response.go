@@ -20,7 +20,7 @@ import (
 
 	"github.com/hyperledger/fabric/core/chaincode/shim"
 	pb "github.com/hyperledger/fabric/protos/peer"
-	"kb-kontrakt.ru/hlfabric/ccdevkit/utils"
+	"github.com/kbkontrakt/hlfabric-ccdevkit/utils"
 )
 
 type (
