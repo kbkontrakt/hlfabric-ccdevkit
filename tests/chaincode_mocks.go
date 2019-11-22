@@ -7,7 +7,7 @@ package tests
 import (
 	gomock "github.com/golang/mock/gomock"
 	timestamp "github.com/golang/protobuf/ptypes/timestamp"
-	"github.com/hyperledger/fabric/core/chaincode/shim"
+	shim "github.com/hyperledger/fabric/core/chaincode/shim"
 	queryresult "github.com/hyperledger/fabric/protos/ledger/queryresult"
 	peer "github.com/hyperledger/fabric/protos/peer"
 	reflect "reflect"
@@ -38,6 +38,7 @@ func (m *MockChaincode) EXPECT() *MockChaincodeMockRecorder {
 
 // Init mocks base method
 func (m *MockChaincode) Init(stub shim.ChaincodeStubInterface) peer.Response {
+	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "Init", stub)
 	ret0, _ := ret[0].(peer.Response)
 	return ret0
@@ -45,11 +46,13 @@ func (m *MockChaincode) Init(stub shim.ChaincodeStubInterface) peer.Response {
 
 // Init indicates an expected call of Init
 func (mr *MockChaincodeMockRecorder) Init(stub interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Init", reflect.TypeOf((*MockChaincode)(nil).Init), stub)
 }
 
 // Invoke mocks base method
 func (m *MockChaincode) Invoke(stub shim.ChaincodeStubInterface) peer.Response {
+	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "Invoke", stub)
 	ret0, _ := ret[0].(peer.Response)
 	return ret0
@@ -57,6 +60,7 @@ func (m *MockChaincode) Invoke(stub shim.ChaincodeStubInterface) peer.Response {
 
 // Invoke indicates an expected call of Invoke
 func (mr *MockChaincodeMockRecorder) Invoke(stub interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Invoke", reflect.TypeOf((*MockChaincode)(nil).Invoke), stub)
 }
 
@@ -85,6 +89,7 @@ func (m *MockChaincodeStubInterface) EXPECT() *MockChaincodeStubInterfaceMockRec
 
 // GetArgs mocks base method
 func (m *MockChaincodeStubInterface) GetArgs() [][]byte {
+	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "GetArgs")
 	ret0, _ := ret[0].([][]byte)
 	return ret0
@@ -92,11 +97,13 @@ func (m *MockChaincodeStubInterface) GetArgs() [][]byte {
 
 // GetArgs indicates an expected call of GetArgs
 func (mr *MockChaincodeStubInterfaceMockRecorder) GetArgs() *gomock.Call {
+	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetArgs", reflect.TypeOf((*MockChaincodeStubInterface)(nil).GetArgs))
 }
 
 // GetStringArgs mocks base method
 func (m *MockChaincodeStubInterface) GetStringArgs() []string {
+	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "GetStringArgs")
 	ret0, _ := ret[0].([]string)
 	return ret0
@@ -104,11 +111,13 @@ func (m *MockChaincodeStubInterface) GetStringArgs() []string {
 
 // GetStringArgs indicates an expected call of GetStringArgs
 func (mr *MockChaincodeStubInterfaceMockRecorder) GetStringArgs() *gomock.Call {
+	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetStringArgs", reflect.TypeOf((*MockChaincodeStubInterface)(nil).GetStringArgs))
 }
 
 // GetFunctionAndParameters mocks base method
 func (m *MockChaincodeStubInterface) GetFunctionAndParameters() (string, []string) {
+	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "GetFunctionAndParameters")
 	ret0, _ := ret[0].(string)
 	ret1, _ := ret[1].([]string)
@@ -117,11 +126,13 @@ func (m *MockChaincodeStubInterface) GetFunctionAndParameters() (string, []strin
 
 // GetFunctionAndParameters indicates an expected call of GetFunctionAndParameters
 func (mr *MockChaincodeStubInterfaceMockRecorder) GetFunctionAndParameters() *gomock.Call {
+	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetFunctionAndParameters", reflect.TypeOf((*MockChaincodeStubInterface)(nil).GetFunctionAndParameters))
 }
 
 // GetArgsSlice mocks base method
 func (m *MockChaincodeStubInterface) GetArgsSlice() ([]byte, error) {
+	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "GetArgsSlice")
 	ret0, _ := ret[0].([]byte)
 	ret1, _ := ret[1].(error)
@@ -130,11 +141,13 @@ func (m *MockChaincodeStubInterface) GetArgsSlice() ([]byte, error) {
 
 // GetArgsSlice indicates an expected call of GetArgsSlice
 func (mr *MockChaincodeStubInterfaceMockRecorder) GetArgsSlice() *gomock.Call {
+	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetArgsSlice", reflect.TypeOf((*MockChaincodeStubInterface)(nil).GetArgsSlice))
 }
 
 // GetTxID mocks base method
 func (m *MockChaincodeStubInterface) GetTxID() string {
+	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "GetTxID")
 	ret0, _ := ret[0].(string)
 	return ret0
@@ -142,11 +155,13 @@ func (m *MockChaincodeStubInterface) GetTxID() string {
 
 // GetTxID indicates an expected call of GetTxID
 func (mr *MockChaincodeStubInterfaceMockRecorder) GetTxID() *gomock.Call {
+	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetTxID", reflect.TypeOf((*MockChaincodeStubInterface)(nil).GetTxID))
 }
 
 // GetChannelID mocks base method
 func (m *MockChaincodeStubInterface) GetChannelID() string {
+	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "GetChannelID")
 	ret0, _ := ret[0].(string)
 	return ret0
@@ -154,11 +169,13 @@ func (m *MockChaincodeStubInterface) GetChannelID() string {
 
 // GetChannelID indicates an expected call of GetChannelID
 func (mr *MockChaincodeStubInterfaceMockRecorder) GetChannelID() *gomock.Call {
+	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetChannelID", reflect.TypeOf((*MockChaincodeStubInterface)(nil).GetChannelID))
 }
 
 // InvokeChaincode mocks base method
 func (m *MockChaincodeStubInterface) InvokeChaincode(chaincodeName string, args [][]byte, channel string) peer.Response {
+	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "InvokeChaincode", chaincodeName, args, channel)
 	ret0, _ := ret[0].(peer.Response)
 	return ret0
@@ -166,11 +183,13 @@ func (m *MockChaincodeStubInterface) InvokeChaincode(chaincodeName string, args 
 
 // InvokeChaincode indicates an expected call of InvokeChaincode
 func (mr *MockChaincodeStubInterfaceMockRecorder) InvokeChaincode(chaincodeName, args, channel interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "InvokeChaincode", reflect.TypeOf((*MockChaincodeStubInterface)(nil).InvokeChaincode), chaincodeName, args, channel)
 }
 
 // GetState mocks base method
 func (m *MockChaincodeStubInterface) GetState(key string) ([]byte, error) {
+	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "GetState", key)
 	ret0, _ := ret[0].([]byte)
 	ret1, _ := ret[1].(error)
@@ -179,11 +198,13 @@ func (m *MockChaincodeStubInterface) GetState(key string) ([]byte, error) {
 
 // GetState indicates an expected call of GetState
 func (mr *MockChaincodeStubInterfaceMockRecorder) GetState(key interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetState", reflect.TypeOf((*MockChaincodeStubInterface)(nil).GetState), key)
 }
 
 // PutState mocks base method
 func (m *MockChaincodeStubInterface) PutState(key string, value []byte) error {
+	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "PutState", key, value)
 	ret0, _ := ret[0].(error)
 	return ret0
@@ -191,11 +212,13 @@ func (m *MockChaincodeStubInterface) PutState(key string, value []byte) error {
 
 // PutState indicates an expected call of PutState
 func (mr *MockChaincodeStubInterfaceMockRecorder) PutState(key, value interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "PutState", reflect.TypeOf((*MockChaincodeStubInterface)(nil).PutState), key, value)
 }
 
 // DelState mocks base method
 func (m *MockChaincodeStubInterface) DelState(key string) error {
+	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "DelState", key)
 	ret0, _ := ret[0].(error)
 	return ret0
@@ -203,11 +226,13 @@ func (m *MockChaincodeStubInterface) DelState(key string) error {
 
 // DelState indicates an expected call of DelState
 func (mr *MockChaincodeStubInterfaceMockRecorder) DelState(key interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DelState", reflect.TypeOf((*MockChaincodeStubInterface)(nil).DelState), key)
 }
 
 // SetStateValidationParameter mocks base method
 func (m *MockChaincodeStubInterface) SetStateValidationParameter(key string, ep []byte) error {
+	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "SetStateValidationParameter", key, ep)
 	ret0, _ := ret[0].(error)
 	return ret0
@@ -215,11 +240,13 @@ func (m *MockChaincodeStubInterface) SetStateValidationParameter(key string, ep 
 
 // SetStateValidationParameter indicates an expected call of SetStateValidationParameter
 func (mr *MockChaincodeStubInterfaceMockRecorder) SetStateValidationParameter(key, ep interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "SetStateValidationParameter", reflect.TypeOf((*MockChaincodeStubInterface)(nil).SetStateValidationParameter), key, ep)
 }
 
 // GetStateValidationParameter mocks base method
 func (m *MockChaincodeStubInterface) GetStateValidationParameter(key string) ([]byte, error) {
+	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "GetStateValidationParameter", key)
 	ret0, _ := ret[0].([]byte)
 	ret1, _ := ret[1].(error)
@@ -228,11 +255,13 @@ func (m *MockChaincodeStubInterface) GetStateValidationParameter(key string) ([]
 
 // GetStateValidationParameter indicates an expected call of GetStateValidationParameter
 func (mr *MockChaincodeStubInterfaceMockRecorder) GetStateValidationParameter(key interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetStateValidationParameter", reflect.TypeOf((*MockChaincodeStubInterface)(nil).GetStateValidationParameter), key)
 }
 
 // GetStateByRange mocks base method
 func (m *MockChaincodeStubInterface) GetStateByRange(startKey, endKey string) (shim.StateQueryIteratorInterface, error) {
+	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "GetStateByRange", startKey, endKey)
 	ret0, _ := ret[0].(shim.StateQueryIteratorInterface)
 	ret1, _ := ret[1].(error)
@@ -241,11 +270,13 @@ func (m *MockChaincodeStubInterface) GetStateByRange(startKey, endKey string) (s
 
 // GetStateByRange indicates an expected call of GetStateByRange
 func (mr *MockChaincodeStubInterfaceMockRecorder) GetStateByRange(startKey, endKey interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetStateByRange", reflect.TypeOf((*MockChaincodeStubInterface)(nil).GetStateByRange), startKey, endKey)
 }
 
 // GetStateByRangeWithPagination mocks base method
 func (m *MockChaincodeStubInterface) GetStateByRangeWithPagination(startKey, endKey string, pageSize int32, bookmark string) (shim.StateQueryIteratorInterface, *peer.QueryResponseMetadata, error) {
+	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "GetStateByRangeWithPagination", startKey, endKey, pageSize, bookmark)
 	ret0, _ := ret[0].(shim.StateQueryIteratorInterface)
 	ret1, _ := ret[1].(*peer.QueryResponseMetadata)
@@ -255,11 +286,13 @@ func (m *MockChaincodeStubInterface) GetStateByRangeWithPagination(startKey, end
 
 // GetStateByRangeWithPagination indicates an expected call of GetStateByRangeWithPagination
 func (mr *MockChaincodeStubInterfaceMockRecorder) GetStateByRangeWithPagination(startKey, endKey, pageSize, bookmark interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetStateByRangeWithPagination", reflect.TypeOf((*MockChaincodeStubInterface)(nil).GetStateByRangeWithPagination), startKey, endKey, pageSize, bookmark)
 }
 
 // GetStateByPartialCompositeKey mocks base method
 func (m *MockChaincodeStubInterface) GetStateByPartialCompositeKey(objectType string, keys []string) (shim.StateQueryIteratorInterface, error) {
+	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "GetStateByPartialCompositeKey", objectType, keys)
 	ret0, _ := ret[0].(shim.StateQueryIteratorInterface)
 	ret1, _ := ret[1].(error)
@@ -268,11 +301,13 @@ func (m *MockChaincodeStubInterface) GetStateByPartialCompositeKey(objectType st
 
 // GetStateByPartialCompositeKey indicates an expected call of GetStateByPartialCompositeKey
 func (mr *MockChaincodeStubInterfaceMockRecorder) GetStateByPartialCompositeKey(objectType, keys interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetStateByPartialCompositeKey", reflect.TypeOf((*MockChaincodeStubInterface)(nil).GetStateByPartialCompositeKey), objectType, keys)
 }
 
 // GetStateByPartialCompositeKeyWithPagination mocks base method
 func (m *MockChaincodeStubInterface) GetStateByPartialCompositeKeyWithPagination(objectType string, keys []string, pageSize int32, bookmark string) (shim.StateQueryIteratorInterface, *peer.QueryResponseMetadata, error) {
+	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "GetStateByPartialCompositeKeyWithPagination", objectType, keys, pageSize, bookmark)
 	ret0, _ := ret[0].(shim.StateQueryIteratorInterface)
 	ret1, _ := ret[1].(*peer.QueryResponseMetadata)
@@ -282,11 +317,13 @@ func (m *MockChaincodeStubInterface) GetStateByPartialCompositeKeyWithPagination
 
 // GetStateByPartialCompositeKeyWithPagination indicates an expected call of GetStateByPartialCompositeKeyWithPagination
 func (mr *MockChaincodeStubInterfaceMockRecorder) GetStateByPartialCompositeKeyWithPagination(objectType, keys, pageSize, bookmark interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetStateByPartialCompositeKeyWithPagination", reflect.TypeOf((*MockChaincodeStubInterface)(nil).GetStateByPartialCompositeKeyWithPagination), objectType, keys, pageSize, bookmark)
 }
 
 // CreateCompositeKey mocks base method
 func (m *MockChaincodeStubInterface) CreateCompositeKey(objectType string, attributes []string) (string, error) {
+	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "CreateCompositeKey", objectType, attributes)
 	ret0, _ := ret[0].(string)
 	ret1, _ := ret[1].(error)
@@ -295,11 +332,13 @@ func (m *MockChaincodeStubInterface) CreateCompositeKey(objectType string, attri
 
 // CreateCompositeKey indicates an expected call of CreateCompositeKey
 func (mr *MockChaincodeStubInterfaceMockRecorder) CreateCompositeKey(objectType, attributes interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "CreateCompositeKey", reflect.TypeOf((*MockChaincodeStubInterface)(nil).CreateCompositeKey), objectType, attributes)
 }
 
 // SplitCompositeKey mocks base method
 func (m *MockChaincodeStubInterface) SplitCompositeKey(compositeKey string) (string, []string, error) {
+	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "SplitCompositeKey", compositeKey)
 	ret0, _ := ret[0].(string)
 	ret1, _ := ret[1].([]string)
@@ -309,11 +348,13 @@ func (m *MockChaincodeStubInterface) SplitCompositeKey(compositeKey string) (str
 
 // SplitCompositeKey indicates an expected call of SplitCompositeKey
 func (mr *MockChaincodeStubInterfaceMockRecorder) SplitCompositeKey(compositeKey interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "SplitCompositeKey", reflect.TypeOf((*MockChaincodeStubInterface)(nil).SplitCompositeKey), compositeKey)
 }
 
 // GetQueryResult mocks base method
 func (m *MockChaincodeStubInterface) GetQueryResult(query string) (shim.StateQueryIteratorInterface, error) {
+	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "GetQueryResult", query)
 	ret0, _ := ret[0].(shim.StateQueryIteratorInterface)
 	ret1, _ := ret[1].(error)
@@ -322,11 +363,13 @@ func (m *MockChaincodeStubInterface) GetQueryResult(query string) (shim.StateQue
 
 // GetQueryResult indicates an expected call of GetQueryResult
 func (mr *MockChaincodeStubInterfaceMockRecorder) GetQueryResult(query interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetQueryResult", reflect.TypeOf((*MockChaincodeStubInterface)(nil).GetQueryResult), query)
 }
 
 // GetQueryResultWithPagination mocks base method
 func (m *MockChaincodeStubInterface) GetQueryResultWithPagination(query string, pageSize int32, bookmark string) (shim.StateQueryIteratorInterface, *peer.QueryResponseMetadata, error) {
+	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "GetQueryResultWithPagination", query, pageSize, bookmark)
 	ret0, _ := ret[0].(shim.StateQueryIteratorInterface)
 	ret1, _ := ret[1].(*peer.QueryResponseMetadata)
@@ -336,11 +379,13 @@ func (m *MockChaincodeStubInterface) GetQueryResultWithPagination(query string, 
 
 // GetQueryResultWithPagination indicates an expected call of GetQueryResultWithPagination
 func (mr *MockChaincodeStubInterfaceMockRecorder) GetQueryResultWithPagination(query, pageSize, bookmark interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetQueryResultWithPagination", reflect.TypeOf((*MockChaincodeStubInterface)(nil).GetQueryResultWithPagination), query, pageSize, bookmark)
 }
 
 // GetHistoryForKey mocks base method
 func (m *MockChaincodeStubInterface) GetHistoryForKey(key string) (shim.HistoryQueryIteratorInterface, error) {
+	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "GetHistoryForKey", key)
 	ret0, _ := ret[0].(shim.HistoryQueryIteratorInterface)
 	ret1, _ := ret[1].(error)
@@ -349,11 +394,13 @@ func (m *MockChaincodeStubInterface) GetHistoryForKey(key string) (shim.HistoryQ
 
 // GetHistoryForKey indicates an expected call of GetHistoryForKey
 func (mr *MockChaincodeStubInterfaceMockRecorder) GetHistoryForKey(key interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetHistoryForKey", reflect.TypeOf((*MockChaincodeStubInterface)(nil).GetHistoryForKey), key)
 }
 
 // GetPrivateData mocks base method
 func (m *MockChaincodeStubInterface) GetPrivateData(collection, key string) ([]byte, error) {
+	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "GetPrivateData", collection, key)
 	ret0, _ := ret[0].([]byte)
 	ret1, _ := ret[1].(error)
@@ -362,11 +409,28 @@ func (m *MockChaincodeStubInterface) GetPrivateData(collection, key string) ([]b
 
 // GetPrivateData indicates an expected call of GetPrivateData
 func (mr *MockChaincodeStubInterfaceMockRecorder) GetPrivateData(collection, key interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetPrivateData", reflect.TypeOf((*MockChaincodeStubInterface)(nil).GetPrivateData), collection, key)
+}
+
+// GetPrivateDataHash mocks base method
+func (m *MockChaincodeStubInterface) GetPrivateDataHash(collection, key string) ([]byte, error) {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "GetPrivateDataHash", collection, key)
+	ret0, _ := ret[0].([]byte)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// GetPrivateDataHash indicates an expected call of GetPrivateDataHash
+func (mr *MockChaincodeStubInterfaceMockRecorder) GetPrivateDataHash(collection, key interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetPrivateDataHash", reflect.TypeOf((*MockChaincodeStubInterface)(nil).GetPrivateDataHash), collection, key)
 }
 
 // PutPrivateData mocks base method
 func (m *MockChaincodeStubInterface) PutPrivateData(collection, key string, value []byte) error {
+	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "PutPrivateData", collection, key, value)
 	ret0, _ := ret[0].(error)
 	return ret0
@@ -374,11 +438,13 @@ func (m *MockChaincodeStubInterface) PutPrivateData(collection, key string, valu
 
 // PutPrivateData indicates an expected call of PutPrivateData
 func (mr *MockChaincodeStubInterfaceMockRecorder) PutPrivateData(collection, key, value interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "PutPrivateData", reflect.TypeOf((*MockChaincodeStubInterface)(nil).PutPrivateData), collection, key, value)
 }
 
 // DelPrivateData mocks base method
 func (m *MockChaincodeStubInterface) DelPrivateData(collection, key string) error {
+	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "DelPrivateData", collection, key)
 	ret0, _ := ret[0].(error)
 	return ret0
@@ -386,11 +452,13 @@ func (m *MockChaincodeStubInterface) DelPrivateData(collection, key string) erro
 
 // DelPrivateData indicates an expected call of DelPrivateData
 func (mr *MockChaincodeStubInterfaceMockRecorder) DelPrivateData(collection, key interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "DelPrivateData", reflect.TypeOf((*MockChaincodeStubInterface)(nil).DelPrivateData), collection, key)
 }
 
 // SetPrivateDataValidationParameter mocks base method
 func (m *MockChaincodeStubInterface) SetPrivateDataValidationParameter(collection, key string, ep []byte) error {
+	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "SetPrivateDataValidationParameter", collection, key, ep)
 	ret0, _ := ret[0].(error)
 	return ret0
@@ -398,11 +466,13 @@ func (m *MockChaincodeStubInterface) SetPrivateDataValidationParameter(collectio
 
 // SetPrivateDataValidationParameter indicates an expected call of SetPrivateDataValidationParameter
 func (mr *MockChaincodeStubInterfaceMockRecorder) SetPrivateDataValidationParameter(collection, key, ep interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "SetPrivateDataValidationParameter", reflect.TypeOf((*MockChaincodeStubInterface)(nil).SetPrivateDataValidationParameter), collection, key, ep)
 }
 
 // GetPrivateDataValidationParameter mocks base method
 func (m *MockChaincodeStubInterface) GetPrivateDataValidationParameter(collection, key string) ([]byte, error) {
+	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "GetPrivateDataValidationParameter", collection, key)
 	ret0, _ := ret[0].([]byte)
 	ret1, _ := ret[1].(error)
@@ -411,11 +481,13 @@ func (m *MockChaincodeStubInterface) GetPrivateDataValidationParameter(collectio
 
 // GetPrivateDataValidationParameter indicates an expected call of GetPrivateDataValidationParameter
 func (mr *MockChaincodeStubInterfaceMockRecorder) GetPrivateDataValidationParameter(collection, key interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetPrivateDataValidationParameter", reflect.TypeOf((*MockChaincodeStubInterface)(nil).GetPrivateDataValidationParameter), collection, key)
 }
 
 // GetPrivateDataByRange mocks base method
 func (m *MockChaincodeStubInterface) GetPrivateDataByRange(collection, startKey, endKey string) (shim.StateQueryIteratorInterface, error) {
+	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "GetPrivateDataByRange", collection, startKey, endKey)
 	ret0, _ := ret[0].(shim.StateQueryIteratorInterface)
 	ret1, _ := ret[1].(error)
@@ -424,11 +496,13 @@ func (m *MockChaincodeStubInterface) GetPrivateDataByRange(collection, startKey,
 
 // GetPrivateDataByRange indicates an expected call of GetPrivateDataByRange
 func (mr *MockChaincodeStubInterfaceMockRecorder) GetPrivateDataByRange(collection, startKey, endKey interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetPrivateDataByRange", reflect.TypeOf((*MockChaincodeStubInterface)(nil).GetPrivateDataByRange), collection, startKey, endKey)
 }
 
 // GetPrivateDataByPartialCompositeKey mocks base method
 func (m *MockChaincodeStubInterface) GetPrivateDataByPartialCompositeKey(collection, objectType string, keys []string) (shim.StateQueryIteratorInterface, error) {
+	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "GetPrivateDataByPartialCompositeKey", collection, objectType, keys)
 	ret0, _ := ret[0].(shim.StateQueryIteratorInterface)
 	ret1, _ := ret[1].(error)
@@ -437,11 +511,13 @@ func (m *MockChaincodeStubInterface) GetPrivateDataByPartialCompositeKey(collect
 
 // GetPrivateDataByPartialCompositeKey indicates an expected call of GetPrivateDataByPartialCompositeKey
 func (mr *MockChaincodeStubInterfaceMockRecorder) GetPrivateDataByPartialCompositeKey(collection, objectType, keys interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetPrivateDataByPartialCompositeKey", reflect.TypeOf((*MockChaincodeStubInterface)(nil).GetPrivateDataByPartialCompositeKey), collection, objectType, keys)
 }
 
 // GetPrivateDataQueryResult mocks base method
 func (m *MockChaincodeStubInterface) GetPrivateDataQueryResult(collection, query string) (shim.StateQueryIteratorInterface, error) {
+	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "GetPrivateDataQueryResult", collection, query)
 	ret0, _ := ret[0].(shim.StateQueryIteratorInterface)
 	ret1, _ := ret[1].(error)
@@ -450,11 +526,13 @@ func (m *MockChaincodeStubInterface) GetPrivateDataQueryResult(collection, query
 
 // GetPrivateDataQueryResult indicates an expected call of GetPrivateDataQueryResult
 func (mr *MockChaincodeStubInterfaceMockRecorder) GetPrivateDataQueryResult(collection, query interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetPrivateDataQueryResult", reflect.TypeOf((*MockChaincodeStubInterface)(nil).GetPrivateDataQueryResult), collection, query)
 }
 
 // GetCreator mocks base method
 func (m *MockChaincodeStubInterface) GetCreator() ([]byte, error) {
+	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "GetCreator")
 	ret0, _ := ret[0].([]byte)
 	ret1, _ := ret[1].(error)
@@ -463,11 +541,13 @@ func (m *MockChaincodeStubInterface) GetCreator() ([]byte, error) {
 
 // GetCreator indicates an expected call of GetCreator
 func (mr *MockChaincodeStubInterfaceMockRecorder) GetCreator() *gomock.Call {
+	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetCreator", reflect.TypeOf((*MockChaincodeStubInterface)(nil).GetCreator))
 }
 
 // GetTransient mocks base method
 func (m *MockChaincodeStubInterface) GetTransient() (map[string][]byte, error) {
+	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "GetTransient")
 	ret0, _ := ret[0].(map[string][]byte)
 	ret1, _ := ret[1].(error)
@@ -476,11 +556,13 @@ func (m *MockChaincodeStubInterface) GetTransient() (map[string][]byte, error) {
 
 // GetTransient indicates an expected call of GetTransient
 func (mr *MockChaincodeStubInterfaceMockRecorder) GetTransient() *gomock.Call {
+	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetTransient", reflect.TypeOf((*MockChaincodeStubInterface)(nil).GetTransient))
 }
 
 // GetBinding mocks base method
 func (m *MockChaincodeStubInterface) GetBinding() ([]byte, error) {
+	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "GetBinding")
 	ret0, _ := ret[0].([]byte)
 	ret1, _ := ret[1].(error)
@@ -489,11 +571,13 @@ func (m *MockChaincodeStubInterface) GetBinding() ([]byte, error) {
 
 // GetBinding indicates an expected call of GetBinding
 func (mr *MockChaincodeStubInterfaceMockRecorder) GetBinding() *gomock.Call {
+	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetBinding", reflect.TypeOf((*MockChaincodeStubInterface)(nil).GetBinding))
 }
 
 // GetDecorations mocks base method
 func (m *MockChaincodeStubInterface) GetDecorations() map[string][]byte {
+	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "GetDecorations")
 	ret0, _ := ret[0].(map[string][]byte)
 	return ret0
@@ -501,11 +585,13 @@ func (m *MockChaincodeStubInterface) GetDecorations() map[string][]byte {
 
 // GetDecorations indicates an expected call of GetDecorations
 func (mr *MockChaincodeStubInterfaceMockRecorder) GetDecorations() *gomock.Call {
+	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetDecorations", reflect.TypeOf((*MockChaincodeStubInterface)(nil).GetDecorations))
 }
 
 // GetSignedProposal mocks base method
 func (m *MockChaincodeStubInterface) GetSignedProposal() (*peer.SignedProposal, error) {
+	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "GetSignedProposal")
 	ret0, _ := ret[0].(*peer.SignedProposal)
 	ret1, _ := ret[1].(error)
@@ -514,11 +600,13 @@ func (m *MockChaincodeStubInterface) GetSignedProposal() (*peer.SignedProposal, 
 
 // GetSignedProposal indicates an expected call of GetSignedProposal
 func (mr *MockChaincodeStubInterfaceMockRecorder) GetSignedProposal() *gomock.Call {
+	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetSignedProposal", reflect.TypeOf((*MockChaincodeStubInterface)(nil).GetSignedProposal))
 }
 
 // GetTxTimestamp mocks base method
 func (m *MockChaincodeStubInterface) GetTxTimestamp() (*timestamp.Timestamp, error) {
+	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "GetTxTimestamp")
 	ret0, _ := ret[0].(*timestamp.Timestamp)
 	ret1, _ := ret[1].(error)
@@ -527,11 +615,13 @@ func (m *MockChaincodeStubInterface) GetTxTimestamp() (*timestamp.Timestamp, err
 
 // GetTxTimestamp indicates an expected call of GetTxTimestamp
 func (mr *MockChaincodeStubInterfaceMockRecorder) GetTxTimestamp() *gomock.Call {
+	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetTxTimestamp", reflect.TypeOf((*MockChaincodeStubInterface)(nil).GetTxTimestamp))
 }
 
 // SetEvent mocks base method
 func (m *MockChaincodeStubInterface) SetEvent(name string, payload []byte) error {
+	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "SetEvent", name, payload)
 	ret0, _ := ret[0].(error)
 	return ret0
@@ -539,6 +629,7 @@ func (m *MockChaincodeStubInterface) SetEvent(name string, payload []byte) error
 
 // SetEvent indicates an expected call of SetEvent
 func (mr *MockChaincodeStubInterfaceMockRecorder) SetEvent(name, payload interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "SetEvent", reflect.TypeOf((*MockChaincodeStubInterface)(nil).SetEvent), name, payload)
 }
 
@@ -567,6 +658,7 @@ func (m *MockCommonIteratorInterface) EXPECT() *MockCommonIteratorInterfaceMockR
 
 // HasNext mocks base method
 func (m *MockCommonIteratorInterface) HasNext() bool {
+	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "HasNext")
 	ret0, _ := ret[0].(bool)
 	return ret0
@@ -574,11 +666,13 @@ func (m *MockCommonIteratorInterface) HasNext() bool {
 
 // HasNext indicates an expected call of HasNext
 func (mr *MockCommonIteratorInterfaceMockRecorder) HasNext() *gomock.Call {
+	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "HasNext", reflect.TypeOf((*MockCommonIteratorInterface)(nil).HasNext))
 }
 
 // Close mocks base method
 func (m *MockCommonIteratorInterface) Close() error {
+	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "Close")
 	ret0, _ := ret[0].(error)
 	return ret0
@@ -586,6 +680,7 @@ func (m *MockCommonIteratorInterface) Close() error {
 
 // Close indicates an expected call of Close
 func (mr *MockCommonIteratorInterfaceMockRecorder) Close() *gomock.Call {
+	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Close", reflect.TypeOf((*MockCommonIteratorInterface)(nil).Close))
 }
 
@@ -614,6 +709,7 @@ func (m *MockStateQueryIteratorInterface) EXPECT() *MockStateQueryIteratorInterf
 
 // HasNext mocks base method
 func (m *MockStateQueryIteratorInterface) HasNext() bool {
+	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "HasNext")
 	ret0, _ := ret[0].(bool)
 	return ret0
@@ -621,11 +717,13 @@ func (m *MockStateQueryIteratorInterface) HasNext() bool {
 
 // HasNext indicates an expected call of HasNext
 func (mr *MockStateQueryIteratorInterfaceMockRecorder) HasNext() *gomock.Call {
+	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "HasNext", reflect.TypeOf((*MockStateQueryIteratorInterface)(nil).HasNext))
 }
 
 // Close mocks base method
 func (m *MockStateQueryIteratorInterface) Close() error {
+	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "Close")
 	ret0, _ := ret[0].(error)
 	return ret0
@@ -633,11 +731,13 @@ func (m *MockStateQueryIteratorInterface) Close() error {
 
 // Close indicates an expected call of Close
 func (mr *MockStateQueryIteratorInterfaceMockRecorder) Close() *gomock.Call {
+	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Close", reflect.TypeOf((*MockStateQueryIteratorInterface)(nil).Close))
 }
 
 // Next mocks base method
 func (m *MockStateQueryIteratorInterface) Next() (*queryresult.KV, error) {
+	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "Next")
 	ret0, _ := ret[0].(*queryresult.KV)
 	ret1, _ := ret[1].(error)
@@ -646,6 +746,7 @@ func (m *MockStateQueryIteratorInterface) Next() (*queryresult.KV, error) {
 
 // Next indicates an expected call of Next
 func (mr *MockStateQueryIteratorInterfaceMockRecorder) Next() *gomock.Call {
+	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Next", reflect.TypeOf((*MockStateQueryIteratorInterface)(nil).Next))
 }
 
@@ -674,6 +775,7 @@ func (m *MockHistoryQueryIteratorInterface) EXPECT() *MockHistoryQueryIteratorIn
 
 // HasNext mocks base method
 func (m *MockHistoryQueryIteratorInterface) HasNext() bool {
+	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "HasNext")
 	ret0, _ := ret[0].(bool)
 	return ret0
@@ -681,11 +783,13 @@ func (m *MockHistoryQueryIteratorInterface) HasNext() bool {
 
 // HasNext indicates an expected call of HasNext
 func (mr *MockHistoryQueryIteratorInterfaceMockRecorder) HasNext() *gomock.Call {
+	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "HasNext", reflect.TypeOf((*MockHistoryQueryIteratorInterface)(nil).HasNext))
 }
 
 // Close mocks base method
 func (m *MockHistoryQueryIteratorInterface) Close() error {
+	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "Close")
 	ret0, _ := ret[0].(error)
 	return ret0
@@ -693,11 +797,13 @@ func (m *MockHistoryQueryIteratorInterface) Close() error {
 
 // Close indicates an expected call of Close
 func (mr *MockHistoryQueryIteratorInterfaceMockRecorder) Close() *gomock.Call {
+	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Close", reflect.TypeOf((*MockHistoryQueryIteratorInterface)(nil).Close))
 }
 
 // Next mocks base method
 func (m *MockHistoryQueryIteratorInterface) Next() (*queryresult.KeyModification, error) {
+	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "Next")
 	ret0, _ := ret[0].(*queryresult.KeyModification)
 	ret1, _ := ret[1].(error)
@@ -706,6 +812,7 @@ func (m *MockHistoryQueryIteratorInterface) Next() (*queryresult.KeyModification
 
 // Next indicates an expected call of Next
 func (mr *MockHistoryQueryIteratorInterfaceMockRecorder) Next() *gomock.Call {
+	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Next", reflect.TypeOf((*MockHistoryQueryIteratorInterface)(nil).Next))
 }
 
@@ -734,6 +841,7 @@ func (m *MockMockQueryIteratorInterface) EXPECT() *MockMockQueryIteratorInterfac
 
 // HasNext mocks base method
 func (m *MockMockQueryIteratorInterface) HasNext() bool {
+	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "HasNext")
 	ret0, _ := ret[0].(bool)
 	return ret0
@@ -741,11 +849,13 @@ func (m *MockMockQueryIteratorInterface) HasNext() bool {
 
 // HasNext indicates an expected call of HasNext
 func (mr *MockMockQueryIteratorInterfaceMockRecorder) HasNext() *gomock.Call {
+	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "HasNext", reflect.TypeOf((*MockMockQueryIteratorInterface)(nil).HasNext))
 }
 
 // Close mocks base method
 func (m *MockMockQueryIteratorInterface) Close() error {
+	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "Close")
 	ret0, _ := ret[0].(error)
 	return ret0
@@ -753,11 +863,13 @@ func (m *MockMockQueryIteratorInterface) Close() error {
 
 // Close indicates an expected call of Close
 func (mr *MockMockQueryIteratorInterfaceMockRecorder) Close() *gomock.Call {
+	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Close", reflect.TypeOf((*MockMockQueryIteratorInterface)(nil).Close))
 }
 
 // Next mocks base method
 func (m *MockMockQueryIteratorInterface) Next() (*queryresult.KV, error) {
+	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "Next")
 	ret0, _ := ret[0].(*queryresult.KV)
 	ret1, _ := ret[1].(error)
@@ -766,5 +878,6 @@ func (m *MockMockQueryIteratorInterface) Next() (*queryresult.KV, error) {
 
 // Next indicates an expected call of Next
 func (mr *MockMockQueryIteratorInterfaceMockRecorder) Next() *gomock.Call {
+	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Next", reflect.TypeOf((*MockMockQueryIteratorInterface)(nil).Next))
 }

@@ -14,9 +14,12 @@
  */
 package auth
 
-import "errors"
+import (
+	"errors"
+	"fmt"
+)
 
-//go:generate mockgen -source=acl_svc.go -package=auth -destination=acl_svc_mocks.go
+//go:generate mockgen -self_package=github.com/kbkontrakt/hlfabric-ccdevkit/auth -source=acl_svc.go -package=auth -destination=acl_svc_mocks.go
 
 type (
 	// AccessName .
@@ -27,6 +30,7 @@ type (
 		All    bool                `json:"all,omitempty"`
 		Attrs  map[string][]string `json:"attrs,omitempty"`
 		MspID  map[string]bool     `json:"msp,omitempty"`
+		Roles  map[string]bool     `json:"roles,omitempty"`
 		CertID map[string]bool     `json:"cid,omitempty"`
 	}
 
@@ -116,6 +120,30 @@ func MatchAccessMspID() MatchAccessListFunc {
 		}
 
 		return nil
+	}
+}
+
+// MatchAccessRoles .
+func MatchAccessRoles() MatchAccessListFunc {
+	return func(name AccessName, ctrlList ControlList, idSvc IdentityService) error {
+		if ctrlList.Roles == nil {
+			return ErrAccessRestricted
+		}
+
+		roles, err := idSvc.Roles()
+		if err != nil {
+			return err
+		}
+
+		for _, role := range roles {
+			if val, ok := ctrlList.Roles[role]; ok && val {
+				return nil
+			}
+		}
+
+		fmt.Printf("Return error")
+
+		return ErrAccessRestricted
 	}
 }
 

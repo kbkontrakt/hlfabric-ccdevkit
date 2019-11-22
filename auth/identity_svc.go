@@ -23,7 +23,7 @@ import (
 	"github.com/hyperledger/fabric/core/chaincode/shim/ext/cid"
 )
 
-//go:generate mockgen -source=identity_svc.go -package=auth -destination=identity_svc_mocks.go
+//go:generate mockgen -self_package=github.com/kbkontrakt/hlfabric-ccdevkit/auth -source=identity_svc.go -package=auth -destination=identity_svc_mocks.go
 
 type (
 	// AttributeValue defines structure for attributes.
@@ -34,8 +34,11 @@ type (
 
 	// IdentityService defines identity of the user/client.
 	IdentityService interface {
-		// ID returns id for group of users/clients
+		// MspID returns id for group of users/clients
 		MspID() (string, error)
+
+		// Roles returns roles related to organizations
+		Roles() ([]string, error)
 
 		// CreatorID returns id for concrete user/client
 		CreatorID() (string, error)
@@ -110,6 +113,10 @@ func (svc *identityServiceImpl) MspID() (string, error) {
 	}
 
 	return svc.clientID.GetMSPID()
+}
+
+func (svc *identityServiceImpl) Roles() ([]string, error) {
+	return []string{}, nil
 }
 
 func (svc *identityServiceImpl) GetAttribute(attrName string) (out AttributeValue, err error) {

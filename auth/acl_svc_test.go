@@ -30,6 +30,7 @@ func TestAclServiceSpec(t *testing.T) {
 		aclRep.EXPECT().Get().
 			Return(ACL{"method1": ControlList{
 				MspID:  map[string]bool{"org1": true, "org2": false},
+				Roles:  map[string]bool{"role1": true, "role2": false},
 				CertID: map[string]bool{"cert1": true, "cert2": false},
 				Attrs:  map[string][]string{"role": {"role1", "role2"}},
 			}}, nil).Times(1)
@@ -64,6 +65,43 @@ func TestAclServiceSpec(t *testing.T) {
 
 		Convey("When check access for method1 by msp org3", func() {
 			idSvc.EXPECT().MspID().Return("org3", nil).Times(1)
+
+			err := svc.IsAllow("method1")
+
+			Convey("Then it should restrict access", func() {
+				So(err, ShouldBeError, ErrAccessRestricted)
+				ctrl.Finish()
+			})
+		})
+
+		// roles
+
+		svc = NewACLServiceImpl(aclRep, idSvc, MatchAccessRoles())
+
+		Convey("When check access for method1 by org roles with role1", func() {
+			idSvc.EXPECT().Roles().Return([]string{"role2", "role1"}, nil).Times(1)
+
+			err := svc.IsAllow("method1")
+
+			Convey("Then it should allow", func() {
+				So(err, ShouldBeNil)
+				ctrl.Finish()
+			})
+		})
+
+		Convey("When check access for method1 by org roles with role2", func() {
+			idSvc.EXPECT().Roles().Return([]string{"role2"}, nil).Times(1)
+
+			err := svc.IsAllow("method1")
+
+			Convey("Then it should restrict access", func() {
+				So(err, ShouldBeError, ErrAccessRestricted)
+				ctrl.Finish()
+			})
+		})
+
+		Convey("When check access for method1 by org roles with role3", func() {
+			idSvc.EXPECT().Roles().Return([]string{"role3"}, nil).Times(1)
 
 			err := svc.IsAllow("method1")
 

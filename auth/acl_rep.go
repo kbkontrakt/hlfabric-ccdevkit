@@ -14,7 +14,7 @@
  */
 package auth
 
-//go:generate mockgen -source=acl_rep.go -package=auth -destination=acl_rep_mocks.go
+//go:generate mockgen -self_package=github.com/kbkontrakt/hlfabric-ccdevkit/auth -source=acl_rep.go -package=auth -destination=acl_rep_mocks.go
 
 import (
 	"errors"

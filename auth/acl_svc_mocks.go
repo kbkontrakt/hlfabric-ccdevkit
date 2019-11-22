@@ -34,6 +34,7 @@ func (m *MockACLService) EXPECT() *MockACLServiceMockRecorder {
 
 // IsAllow mocks base method
 func (m *MockACLService) IsAllow(accessName string) error {
+	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "IsAllow", accessName)
 	ret0, _ := ret[0].(error)
 	return ret0
@@ -41,5 +42,6 @@ func (m *MockACLService) IsAllow(accessName string) error {
 
 // IsAllow indicates an expected call of IsAllow
 func (mr *MockACLServiceMockRecorder) IsAllow(accessName interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "IsAllow", reflect.TypeOf((*MockACLService)(nil).IsAllow), accessName)
 }

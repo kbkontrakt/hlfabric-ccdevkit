@@ -34,6 +34,7 @@ func (m *MockTimeService) EXPECT() *MockTimeServiceMockRecorder {
 
 // NowDateTime mocks base method
 func (m *MockTimeService) NowDateTime() (DateTime, error) {
+	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "NowDateTime")
 	ret0, _ := ret[0].(DateTime)
 	ret1, _ := ret[1].(error)
@@ -42,5 +43,6 @@ func (m *MockTimeService) NowDateTime() (DateTime, error) {
 
 // NowDateTime indicates an expected call of NowDateTime
 func (mr *MockTimeServiceMockRecorder) NowDateTime() *gomock.Call {
+	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "NowDateTime", reflect.TypeOf((*MockTimeService)(nil).NowDateTime))
 }

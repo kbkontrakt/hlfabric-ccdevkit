@@ -35,6 +35,7 @@ func (m *MockIdentityService) EXPECT() *MockIdentityServiceMockRecorder {
 
 // MspID mocks base method
 func (m *MockIdentityService) MspID() (string, error) {
+	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "MspID")
 	ret0, _ := ret[0].(string)
 	ret1, _ := ret[1].(error)
@@ -43,11 +44,28 @@ func (m *MockIdentityService) MspID() (string, error) {
 
 // MspID indicates an expected call of MspID
 func (mr *MockIdentityServiceMockRecorder) MspID() *gomock.Call {
+	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "MspID", reflect.TypeOf((*MockIdentityService)(nil).MspID))
+}
+
+// Roles mocks base method
+func (m *MockIdentityService) Roles() ([]string, error) {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "Roles")
+	ret0, _ := ret[0].([]string)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// Roles indicates an expected call of Roles
+func (mr *MockIdentityServiceMockRecorder) Roles() *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Roles", reflect.TypeOf((*MockIdentityService)(nil).Roles))
 }
 
 // CreatorID mocks base method
 func (m *MockIdentityService) CreatorID() (string, error) {
+	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "CreatorID")
 	ret0, _ := ret[0].(string)
 	ret1, _ := ret[1].(error)
@@ -56,11 +74,13 @@ func (m *MockIdentityService) CreatorID() (string, error) {
 
 // CreatorID indicates an expected call of CreatorID
 func (mr *MockIdentityServiceMockRecorder) CreatorID() *gomock.Call {
+	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "CreatorID", reflect.TypeOf((*MockIdentityService)(nil).CreatorID))
 }
 
 // Cert mocks base method
 func (m *MockIdentityService) Cert() (*x509.Certificate, error) {
+	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "Cert")
 	ret0, _ := ret[0].(*x509.Certificate)
 	ret1, _ := ret[1].(error)
@@ -69,11 +89,13 @@ func (m *MockIdentityService) Cert() (*x509.Certificate, error) {
 
 // Cert indicates an expected call of Cert
 func (mr *MockIdentityServiceMockRecorder) Cert() *gomock.Call {
+	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Cert", reflect.TypeOf((*MockIdentityService)(nil).Cert))
 }
 
 // CertID mocks base method
 func (m *MockIdentityService) CertID() (string, error) {
+	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "CertID")
 	ret0, _ := ret[0].(string)
 	ret1, _ := ret[1].(error)
@@ -82,11 +104,13 @@ func (m *MockIdentityService) CertID() (string, error) {
 
 // CertID indicates an expected call of CertID
 func (mr *MockIdentityServiceMockRecorder) CertID() *gomock.Call {
+	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "CertID", reflect.TypeOf((*MockIdentityService)(nil).CertID))
 }
 
 // GetAttribute mocks base method
 func (m *MockIdentityService) GetAttribute(attrName string) (AttributeValue, error) {
+	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "GetAttribute", attrName)
 	ret0, _ := ret[0].(AttributeValue)
 	ret1, _ := ret[1].(error)
@@ -95,5 +119,6 @@ func (m *MockIdentityService) GetAttribute(attrName string) (AttributeValue, err
 
 // GetAttribute indicates an expected call of GetAttribute
 func (mr *MockIdentityServiceMockRecorder) GetAttribute(attrName interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetAttribute", reflect.TypeOf((*MockIdentityService)(nil).GetAttribute), attrName)
 }

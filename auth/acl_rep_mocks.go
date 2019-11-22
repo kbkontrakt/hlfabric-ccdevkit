@@ -34,6 +34,7 @@ func (m *MockACLRepository) EXPECT() *MockACLRepositoryMockRecorder {
 
 // Get mocks base method
 func (m *MockACLRepository) Get() (ACL, error) {
+	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "Get")
 	ret0, _ := ret[0].(ACL)
 	ret1, _ := ret[1].(error)
@@ -42,11 +43,13 @@ func (m *MockACLRepository) Get() (ACL, error) {
 
 // Get indicates an expected call of Get
 func (mr *MockACLRepositoryMockRecorder) Get() *gomock.Call {
+	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Get", reflect.TypeOf((*MockACLRepository)(nil).Get))
 }
 
 // Save mocks base method
 func (m *MockACLRepository) Save(acl ACL) error {
+	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "Save", acl)
 	ret0, _ := ret[0].(error)
 	return ret0
@@ -54,5 +57,6 @@ func (m *MockACLRepository) Save(acl ACL) error {
 
 // Save indicates an expected call of Save
 func (mr *MockACLRepositoryMockRecorder) Save(acl interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Save", reflect.TypeOf((*MockACLRepository)(nil).Save), acl)
 }
