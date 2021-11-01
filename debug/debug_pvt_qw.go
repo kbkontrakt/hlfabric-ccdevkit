@@ -15,7 +15,7 @@
 package debug
 
 import (
-	"github.com/hyperledger/fabric/core/chaincode/shim"
+	"github.com/hyperledger/fabric-chaincode-go/shim"
 )
 
 type debugPrivateQueryPutData struct {

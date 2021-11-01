@@ -18,7 +18,8 @@ import (
 	"encoding/json"
 	"errors"
 
-	"github.com/hyperledger/fabric/core/chaincode/shim"
+	"github.com/hyperledger/fabric-chaincode-go/shim"
+	"github.com/sirupsen/logrus"
 )
 
 // Invoke processes debug methods
@@ -26,8 +27,9 @@ func Invoke(stub shim.ChaincodeStubInterface, args []string) ([]byte, error) {
 	const lockKey = "debuglock_"
 	const batchEnumSize = 2048
 
-	logger := shim.NewLogger("debugtools")
+	// logger := logrus.NewLogger("debugtools")
 
+	logger := logrus.New()
 	lockData, err := stub.GetState(lockKey)
 	if err != nil {
 		return nil, err

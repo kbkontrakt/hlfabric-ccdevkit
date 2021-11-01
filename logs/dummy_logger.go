@@ -15,17 +15,17 @@
 package logs
 
 import (
-	"github.com/hyperledger/fabric/core/chaincode/shim"
+	"github.com/sirupsen/logrus"
 )
 
 // dummyLogger .
 type dummyLogger struct{}
 
 // SetLevel .
-func (c *dummyLogger) SetLevel(level shim.LoggingLevel) {}
+func (c *dummyLogger) SetLevel(level logrus.Level) {}
 
 // IsEnabledFor .
-func (c *dummyLogger) IsEnabledFor(level shim.LoggingLevel) bool {
+func (c *dummyLogger) IsLevelEnabled(level logrus.Level) bool {
 	return true
 }
 

@@ -1,24 +1,19 @@
 module github.com/kbkontrakt/hlfabric-ccdevkit
 
-go 1.11
+go 1.14
 
 require (
-	github.com/Knetic/govaluate v3.0.0+incompatible // indirect
-	github.com/Shopify/sarama v1.24.1 // indirect
-	github.com/fsouza/go-dockerclient v1.4.4 // indirect
-	github.com/golang/mock v1.3.1
-	github.com/golang/protobuf v1.3.2
-	github.com/grpc-ecosystem/go-grpc-middleware v1.1.0 // indirect
-	github.com/hashicorp/go-version v1.2.0 // indirect
-	github.com/hyperledger/fabric v1.4.3
-	github.com/hyperledger/fabric-amcl v0.0.0-20190902191507-f66264322317 // indirect
-	github.com/klauspost/cpuid v1.2.1 // indirect
-	github.com/miekg/pkcs11 v1.0.3 // indirect
-	github.com/onsi/ginkgo v1.10.3 // indirect
-	github.com/onsi/gomega v1.7.1 // indirect
-	github.com/op/go-logging v0.0.0-20160315200505-970db520ece7 // indirect
-	github.com/smartystreets/goconvey v0.0.0-20190731233626-505e41936337
-	github.com/spf13/viper v1.4.0 // indirect
-	github.com/sykesm/zap-logfmt v0.0.2 // indirect
-	google.golang.org/grpc v1.23.1 // indirect
+	github.com/golang/mock v1.6.0
+	github.com/golang/protobuf v1.5.2
+	github.com/gopherjs/gopherjs v0.0.0-20211030200517-e8a8f89b521b // indirect
+	github.com/hyperledger/fabric-chaincode-go v0.0.0-20210718160520-38d29fabecb9
+	github.com/hyperledger/fabric-protos-go v0.0.0-20211006172752-14f4318ce71c
+	github.com/sirupsen/logrus v1.8.1
+	github.com/smartystreets/assertions v1.2.1 // indirect
+	github.com/smartystreets/goconvey v1.7.2
+	golang.org/x/net v0.0.0-20211029224645-99673261e6eb // indirect
+	golang.org/x/sys v0.0.0-20211031064116-611d5d643895 // indirect
+	golang.org/x/text v0.3.7 // indirect
+	google.golang.org/genproto v0.0.0-20211029142109-e255c875f7c7 // indirect
+	google.golang.org/grpc v1.41.0 // indirect
 )

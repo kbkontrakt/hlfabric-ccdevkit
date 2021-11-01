@@ -18,8 +18,8 @@ import (
 	"encoding/json"
 
 	"github.com/golang/protobuf/ptypes/timestamp"
-	"github.com/hyperledger/fabric/core/chaincode/shim"
-	qr "github.com/hyperledger/fabric/protos/ledger/queryresult"
+	"github.com/hyperledger/fabric-chaincode-go/shim"
+	qr "github.com/hyperledger/fabric-protos-go/ledger/queryresult"
 )
 
 type (
