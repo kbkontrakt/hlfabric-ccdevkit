@@ -17,7 +17,7 @@ package utils
 import (
 	"encoding/json"
 
-	"github.com/hyperledger/fabric/core/chaincode/shim"
+	"github.com/hyperledger/fabric-chaincode-go/shim"
 )
 
 // GetArgsFromTransientMap returns function name and args from transientMap

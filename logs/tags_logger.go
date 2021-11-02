@@ -18,25 +18,25 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/hyperledger/fabric/core/chaincode/shim"
+	"github.com/sirupsen/logrus"
 )
 
 // Logger .
 type Logger interface {
-	SetLevel(level shim.LoggingLevel)
-	IsEnabledFor(level shim.LoggingLevel) bool
+	SetLevel(level logrus.Level)
+	IsLevelEnabled(level logrus.Level) bool
 	Debug(args ...interface{})
 	Info(args ...interface{})
-	Notice(args ...interface{})
+	// Notice(args ...interface{})
 	Warning(args ...interface{})
 	Error(args ...interface{})
-	Critical(args ...interface{})
+	// Critical(args ...interface{})
 	Debugf(format string, args ...interface{})
 	Infof(format string, args ...interface{})
-	Noticef(format string, args ...interface{})
+	// Noticef(format string, args ...interface{})
 	Warningf(format string, args ...interface{})
 	Errorf(format string, args ...interface{})
-	Criticalf(format string, args ...interface{})
+	// Criticalf(format string, args ...interface{})
 }
 
 // TaggedLogger .
@@ -91,98 +91,98 @@ func (c *TaggedLogger) AddTags(tagValuePairs ...string) *TaggedLogger {
 }
 
 // SetLevel .
-func (c *TaggedLogger) SetLevel(level shim.LoggingLevel) {
+func (c *TaggedLogger) SetLevel(level logrus.Level) {
 	c.logger.SetLevel(level)
 }
 
 // IsEnabledFor .
-func (c *TaggedLogger) IsEnabledFor(level shim.LoggingLevel) bool {
-	return c.logger.IsEnabledFor(level)
+func (c *TaggedLogger) IsLevelEnabled(level logrus.Level) bool {
+	return c.logger.IsLevelEnabled(level)
 }
 
 // Debug .
 func (c *TaggedLogger) Debug(args ...interface{}) {
-	if c.IsEnabledFor(shim.LogDebug) {
+	if c.IsLevelEnabled(logrus.DebugLevel) {
 		c.logger.Debug(append(args, c.formatTags(""))...)
 	}
 }
 
 // Info .
 func (c *TaggedLogger) Info(args ...interface{}) {
-	if c.IsEnabledFor(shim.LogInfo) {
+	if c.IsLevelEnabled(logrus.InfoLevel) {
 		c.logger.Info(append(args, c.formatTags(""))...)
 	}
 }
 
 // Notice .
-func (c *TaggedLogger) Notice(args ...interface{}) {
-	if c.IsEnabledFor(shim.LogNotice) {
-		c.logger.Notice(append(args, c.formatTags(""))...)
-	}
-}
+// func (c *TaggedLogger) Notice(args ...interface{}) {
+// 	if c.IsEnabledFor(logrus.WarnLevel) {
+// 		c.logger.Notice(append(args, c.formatTags(""))...)
+// 	}
+// }
 
 // Warning .
 func (c *TaggedLogger) Warning(args ...interface{}) {
-	if c.IsEnabledFor(shim.LogWarning) {
+	if c.IsLevelEnabled(logrus.WarnLevel) {
 		c.logger.Warning(append(args, c.formatTags(""))...)
 	}
 }
 
 // Error .
 func (c *TaggedLogger) Error(args ...interface{}) {
-	if c.IsEnabledFor(shim.LogError) {
+	if c.IsLevelEnabled(logrus.ErrorLevel) {
 		c.logger.Error(append(args, c.formatTags(""))...)
 	}
 }
 
 // Critical .
-func (c *TaggedLogger) Critical(args ...interface{}) {
-	if c.IsEnabledFor(shim.LogCritical) {
-		c.logger.Critical(append(args, c.formatTags(""))...)
-	}
-}
+// func (c *TaggedLogger) Critical(args ...interface{}) {
+// 	if c.IsEnabledFor(logrus.FatalLevel) {
+// 		c.logger.Critical(append(args, c.formatTags(""))...)
+// 	}
+// }
 
 // Debugf .
 func (c *TaggedLogger) Debugf(format string, args ...interface{}) {
-	if c.IsEnabledFor(shim.LogDebug) {
+	if c.IsLevelEnabled(logrus.DebugLevel) {
 		c.logger.Debugf(format+c.formatTags(" "), args...)
 	}
 }
 
 // Infof .
 func (c *TaggedLogger) Infof(format string, args ...interface{}) {
-	if c.IsEnabledFor(shim.LogInfo) {
+	if c.IsLevelEnabled(logrus.InfoLevel) {
 		c.logger.Infof(format+c.formatTags(" "), args...)
 	}
 }
 
 // Noticef .
-func (c *TaggedLogger) Noticef(format string, args ...interface{}) {
-	if c.IsEnabledFor(shim.LogNotice) {
-		c.logger.Noticef(format+c.formatTags(" "), args...)
-	}
-}
+// func (c *TaggedLogger) Noticef(format string, args ...interface{}) {
+// 	if c.IsEnabledFor(logrus.WarnLevel) {
+// 		c.logger.Noticef(format+c.formatTags(" "), args...)
+// 	}
+// }
 
 // Warningf .
 func (c *TaggedLogger) Warningf(format string, args ...interface{}) {
-	if c.IsEnabledFor(shim.LogWarning) {
+	if c.IsLevelEnabled(logrus.WarnLevel) {
 		c.logger.Warningf(format+c.formatTags(" "), args...)
 	}
 }
 
 // Errorf .
 func (c *TaggedLogger) Errorf(format string, args ...interface{}) {
-	if c.IsEnabledFor(shim.LogError) {
+	if c.IsLevelEnabled(logrus.ErrorLevel) {
 		c.logger.Errorf(format+c.formatTags(" "), args...)
 	}
 }
 
 // Criticalf .
-func (c *TaggedLogger) Criticalf(format string, args ...interface{}) {
-	if c.IsEnabledFor(shim.LogCritical) {
-		c.logger.Criticalf(format+c.formatTags(" "), args...)
-	}
-}
+// func (c *TaggedLogger) Criticalf(format string, args ...interface{}) {
+// 	if c.IsEnabledFor(logrus.FatalLevel) {
+// 		c.logger.Criticalf(format+c.formatTags(" "), args...)
+// 	}
+// }
 
 // WithTags extends logger by tags.
 func WithTags(logger Logger, tagValuePairs ...string) Logger {

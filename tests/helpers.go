@@ -22,15 +22,15 @@ import (
 
 	gomock "github.com/golang/mock/gomock"
 	timestamp "github.com/golang/protobuf/ptypes/timestamp"
-	"github.com/hyperledger/fabric/core/chaincode/shim"
-	queryresult "github.com/hyperledger/fabric/protos/ledger/queryresult"
+	"github.com/hyperledger/fabric-chaincode-go/shimtest"
+	queryresult "github.com/hyperledger/fabric-protos-go/ledger/queryresult"
 )
 
 // NewSMC .
-func NewSMC(t *testing.T, ccname string) (*MockChaincodeStubInterface, *shim.MockStub, *gomock.Controller) {
+func NewSMC(t *testing.T, ccname string) (*MockChaincodeStubInterface, *shimtest.MockStub, *gomock.Controller) {
 	ctrl := gomock.NewController(t)
 
-	mock := shim.NewMockStub(ccname, nil)
+	mock := shimtest.NewMockStub(ccname, nil)
 	mock.MockTransactionStart("TX1")
 
 	return NewMockChaincodeStubInterface(ctrl), mock, ctrl
@@ -79,70 +79,70 @@ func jsonPreFillByKeyValPairs(callback func(string, []byte), keyValPairs ...inte
 }
 
 // JSONFillMockState .
-func JSONFillMockState(mock *shim.MockStub, keyValPairs ...interface{}) {
+func JSONFillMockState(mock *shimtest.MockStub, keyValPairs ...interface{}) {
 	jsonPreFillByKeyValPairs(func(key string, data []byte) {
 		mock.PutState(key, data)
 	}, keyValPairs...)
 }
 
 // JSONFillMockPrvState .
-func JSONFillMockPrvState(mock *shim.MockStub, collectionName string, keyValPairs ...interface{}) {
+func JSONFillMockPrvState(mock *shimtest.MockStub, collectionName string, keyValPairs ...interface{}) {
 	jsonPreFillByKeyValPairs(func(key string, data []byte) {
 		mock.PutPrivateData(collectionName, key, data)
 	}, keyValPairs...)
 }
 
 // WrapShimMockGetPrivState .
-func WrapShimMockGetPrivState(mock *shim.MockStub) interface{} {
+func WrapShimMockGetPrivState(mock *shimtest.MockStub) interface{} {
 	return func(collection, key string) ([]byte, error) {
 		return mock.GetPrivateData(collection, key)
 	}
 }
 
 // WrapShimMockPutPrivState .
-func WrapShimMockPutPrivState(mock *shim.MockStub) interface{} {
+func WrapShimMockPutPrivState(mock *shimtest.MockStub) interface{} {
 	return func(collection, key string, data []byte) error {
 		return mock.PutPrivateData(collection, key, data)
 	}
 }
 
 // WrapShimMockDelPrivState .
-func WrapShimMockDelPrivState(mock *shim.MockStub) interface{} {
+func WrapShimMockDelPrivState(mock *shimtest.MockStub) interface{} {
 	return func(collection, key string, data []byte) error {
 		return mock.DelPrivateData(collection, key)
 	}
 }
 
 // WrapShimMockGetState .
-func WrapShimMockGetState(mock *shim.MockStub) interface{} {
+func WrapShimMockGetState(mock *shimtest.MockStub) interface{} {
 	return func(key string) ([]byte, error) {
 		return mock.GetState(key)
 	}
 }
 
 // WrapShimMockPutState .
-func WrapShimMockPutState(mock *shim.MockStub) interface{} {
+func WrapShimMockPutState(mock *shimtest.MockStub) interface{} {
 	return func(key string, data []byte) error {
 		return mock.PutState(key, data)
 	}
 }
 
 // WrapShimMockDelState .
-func WrapShimMockDelState(mock *shim.MockStub) interface{} {
+func WrapShimMockDelState(mock *shimtest.MockStub) interface{} {
 	return func(key string, data []byte) error {
 		return mock.DelState(key)
 	}
 }
 
 // WrapShimMockTxStamp .
-func WrapShimMockTxStamp(mock *shim.MockStub) interface{} {
+func WrapShimMockTxStamp(mock *shimtest.MockStub) interface{} {
 	return func() (*timestamp.Timestamp, error) {
 		return mock.GetTxTimestamp()
 	}
 }
 
 // WrapShimMockTxID .
-func WrapShimMockTxID(mock *shim.MockStub) interface{} {
+func WrapShimMockTxID(mock *shimtest.MockStub) interface{} {
 	return func() string {
 		return mock.GetTxID()
 	}

@@ -19,8 +19,8 @@ import (
 	"crypto/x509"
 	"encoding/hex"
 
-	"github.com/hyperledger/fabric/core/chaincode/shim"
-	"github.com/hyperledger/fabric/core/chaincode/shim/ext/cid"
+	"github.com/hyperledger/fabric-chaincode-go/pkg/cid"
+	"github.com/hyperledger/fabric-chaincode-go/shim"
 )
 
 //go:generate mockgen -source=identity_svc.go -package=auth -destination=identity_svc_mocks.go

@@ -15,10 +15,13 @@
 package debug
 
 import (
-	"github.com/hyperledger/fabric/core/chaincode/shim"
+	"github.com/kbkontrakt/hlfabric-ccdevkit/logs"
+	"github.com/sirupsen/logrus"
+
+	"github.com/hyperledger/fabric-chaincode-go/shim"
 )
 
-var debugLog = shim.NewLogger("debug_stubs")
+var debugLog = logs.TagLogger(logrus.New())
 
 type debugGetStateByEmptyKey struct {
 	shim.ChaincodeStubInterface
